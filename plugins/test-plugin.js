@@ -4,7 +4,9 @@ class TestPlugin {
   }
 
   apply(compiler){
+    debugger
     console.log('TestPlugin applied');
+    console.log('compiler', compiler);
 
     compiler.hooks.environment.tap('TestPlugin', () => {
       console.log('TestPlugin environment hook')
@@ -12,6 +14,7 @@ class TestPlugin {
 
     compiler.hooks.emit.tap('TestPlugin', (compilation) => {
       console.log('TestPlugin emit 111');
+      console.log('compilation', compilation);
     })
 
     compiler.hooks.emit.tapAsync('TestPlugin', (compilation, callback) => {
