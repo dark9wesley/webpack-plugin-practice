@@ -1,4 +1,5 @@
 const path = require('path')
+const TestPlugin = require('./plugins/test-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -6,5 +7,8 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
+  plugins: [
+    new TestPlugin()
+  ],
   mode: 'development',
 }
