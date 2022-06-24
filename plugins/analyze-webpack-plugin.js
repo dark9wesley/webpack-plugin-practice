@@ -1,0 +1,21 @@
+class AnalyzeWebpackPlugin {
+  apply(compiler){  
+    compiler.hooks.emit.tap('AnalyzeWebpackPlugin', (compilation) => {
+      // Object.entries将对象变成二维数组。二维数组中第一项值是key，第二项值是value
+      const assets = Object.entries(compilation.assets)
+
+      let source = '# 分析打包资源大小 \n| 名称 | 大小 |\n| --- | --- |'
+      assets.forEach(([filename, file]) => {
+        source += `\n| ${filename} | ${file.size()} |`;
+      })
+
+      //添加资源
+      compilation.assets["analyze.md"] = {
+        source: () => source,
+        size: () => source.length,
+      }
+    })
+  }
+}
+
+module.exports = AnalyzeWebpackPlugin;
