@@ -1,6 +1,7 @@
 const path = require('path')
-const TestPlugin = require('./plugins/test-plugin')
+// const TestPlugin = require('./plugins/test-plugin')
 const BannerPlugin = require('./plugins/banner-webpack-plugin')
+const CleanPlugin = require('./plugins/clean-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -14,6 +15,7 @@ module.exports = {
     new BannerPlugin({
       author: 'pengyw'
     }),
+    new CleanPlugin()
   ],
   mode: 'production',
 }
