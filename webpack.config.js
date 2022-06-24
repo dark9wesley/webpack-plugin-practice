@@ -1,5 +1,6 @@
 const path = require('path')
 const TestPlugin = require('./plugins/test-plugin')
+const BannerPlugin = require('./plugins/banner-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -8,7 +9,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new TestPlugin()
+    // new TestPlugin(),
+    new BannerPlugin({
+      author: 'pengyw'
+    }),
   ],
-  mode: 'development',
+  mode: 'production',
 }

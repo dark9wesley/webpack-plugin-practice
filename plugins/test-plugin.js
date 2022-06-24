@@ -4,7 +4,6 @@ class TestPlugin {
   }
 
   apply(compiler){
-    debugger
     console.log('TestPlugin applied');
     console.log('compiler', compiler);
 
